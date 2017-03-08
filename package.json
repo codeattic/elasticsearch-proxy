@@ -7,7 +7,8 @@
 		"elasticsearch-proxy": "./lib/cli.js"
 	},
 	"scripts": {
-		"docker": "docker build -t codeattic/elasticsearch-proxy:${npm_package_version} ."
+		"docker": "docker build -t codeattic/elasticsearch-proxy:${npm_package_version} .",
+		"start": "node lib/cli.js"
 	},
 	"dependencies": {
 		"http-proxy": "1.16.2",
