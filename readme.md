@@ -1,6 +1,6 @@
 # elasticsearch-proxy
 
-Proxy to log/audit all the users' requests between a Kibana instance and an Elasticsearch cluster.
+Proxy to log/audit users' requests between a Kibana instance and an Elasticsearch cluster.
 
 ## Install and run
 
@@ -16,12 +16,12 @@ Create globally-installed symbolic links:
 npm link
 ```    
     
-By default _elasticsearch-proxy_ listens on port `9100` and forwards requests to Elasticsearch running on `http://localhost:9200`.
+By default _elasticsearch-proxy_ listens on port `9100` and forwards requests to Elasticsearch running on `http://elasticsearch:9200`.
 
 Configure Kibana (see `kibana.yml`) to indicate where _elasticsearch-proxy_ is running: 
     
 ```yaml
-elasticsearch.url: http://localhost:9100
+elasticsearch.url: http://elasticsearch-proxy:9200
 ```
         
 To start the proxy server:
@@ -33,10 +33,10 @@ elasticsearch-proxy
 These are the environment variables (and their default values) that you can configure:
 
 ```bash
-PROXY_ELASTICSEARCH_URL=http://localhost:9200
+PROXY_ELASTICSEARCH_URL=http://elasticsearch:9200
 PROXY_EXCLUDE_USERS=kibana
 PROXY_LOGGER=console
-PROXY_PORT=9100
+PROXY_PORT=9200
 ```
 
 ## Docker
@@ -53,16 +53,14 @@ To start `elasticsearch-proxy` using docker:
 docker run -d -P codeattic/elasticsearch-proxy
 ```
 
-## Configuration
-
-Default configuration file `$CWD/config/elasticsearch_proxy.yaml`:
+You can configure the proxy by modifing the environment variables described above or by changing the YAML configuration file at `/usr/share/elasticsearch-proxy/config/elasticsearch-proxy.yaml`:
 
 ```yaml
 # Proxy port
 port: 9100
 
 # Elasticsearch URL
-elasticsearchUrl: http://localhost:9200
+elasticsearchUrl: http://elasticsearch:9200
 
 # Users to exclude from auditing
 excludeUsers: [kibana]
@@ -85,3 +83,5 @@ rules:
     request: json
     response: jsonDocIds
 ```
+
+The environment variables override the corresponding settings from the configuration file.
