@@ -1,0 +1,26 @@
+# Proxy port
+port: 9200
+
+# Elasticsearch URL
+elasticsearchUrl: http://elasticsearch:9200
+
+# Users to exclude from auditing
+excludeUsers: [kibana]
+
+# Logger
+logger: console
+
+# Auditing rules
+rules:
+  - include: ^/_msearch$
+    request: jsonBulk
+    response: jsonDocIds
+
+  - include: ^/_mget$
+    request: jsonDocIds
+    response: jsonDocIds
+
+  - include: /_search
+    exclude: ^/.reporting
+    request: json
+    response: jsonDocIds

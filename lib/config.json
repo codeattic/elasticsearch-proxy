@@ -1,0 +1,24 @@
+{
+	"port": 9200,
+	"elasticsearchUrl": "http://elasticsearch:9200",
+	"excludeUsers": ["kibana"],
+	"logger": "console",
+	"rules": [
+		{
+			"include": "^\/_msearch$",
+			"request": "jsonBulk",
+			"response": "jsonDocIds"
+		},
+		{
+			"include": "^\/_mget$",
+			"request": "jsonDocIds",
+			"response": "jsonDocIds"
+		},
+		{
+			"include": "\/_search",
+			"exclude": "^\/.reporting",
+			"request": "json",
+			"response": "jsonDocIds"
+		}
+	]
+}

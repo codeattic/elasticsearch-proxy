@@ -1,0 +1,25 @@
+{
+	"name": "elasticsearch-proxy",
+	"version": "1.0.0",
+	"description": "Proxy to log/audit users' requests between a Kibana instance and an Elasticsearch cluster.",
+	"main": "./lib/proxy.js",
+	"bin": {
+		"elasticsearch-proxy": "./lib/cli.js"
+	},
+	"scripts": {
+		"docker": "docker build -t codeattic/elasticsearch-proxy:${npm_package_version} ."
+	},
+	"dependencies": {
+		"http-proxy": "1.16.2",
+		"js-yaml": "3.8.2"
+	},
+	"author": {
+		"name": "Juan Hernandez",
+		"email": "juan.hernandez@codeattic.net"
+	},
+	"license": "Apache-2.0",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/codeattic/elasticsearch-proxy"
+	}
+}
