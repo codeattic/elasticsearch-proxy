@@ -16,7 +16,7 @@ Create globally-installed symbolic links:
 npm link
 ```    
     
-By default _elasticsearch-proxy_ listens on port `9100` and forwards requests to Elasticsearch running on `http://elasticsearch:9200`.
+By default _elasticsearch-proxy_ listens on port `9200` and forwards requests to Elasticsearch running on `http://elasticsearch:9200`.
 
 Configure Kibana (see `kibana.yml`) to indicate where _elasticsearch-proxy_ is running: 
     
@@ -57,7 +57,7 @@ You can configure the proxy by modifing the environment variables described abov
 
 ```yaml
 # Proxy port
-port: 9100
+port: 9200
 
 # Elasticsearch URL
 elasticsearchUrl: http://elasticsearch:9200
